@@ -1,5 +1,5 @@
 # Hyperledger Fabric TLS Enabled Network
-    Network Setup
+*    Network Setup
         1. Go to network folder and run 1.startNetwork script and
         to create crypto materials uncomment 5th Line in the script.
 
