@@ -1,0 +1,79 @@
+{
+    "name": "first-network-manufacturer",
+    "version": "1.0.0",
+    "client": {
+        "organization": "Manufacturer",
+        "connection": {
+            "timeout": {
+                "peer": {
+                    "endorser": "300"
+                }
+            }
+        }
+    },
+    "channels": {
+        "mychannel": {
+            "orderers":  [
+                "orderer.product.com"
+            ],
+            "peers":{
+                "peer0.manufacturer.product.com": []
+            }
+        }
+    },
+    "organizations": {
+        "Manufacturer": {
+            "mspid": "ManufacturerMSP",
+            "peers": [
+                "peer0.manufacturer.product.com"
+            ],
+            "certificateAuthorities": [
+                "ca.product.com"
+            ]
+        },
+        "identities": [
+            {
+                "role": {
+                    "name": "client",
+                    "mspId": "ManufacturerMSP"
+                }
+            }
+        ],
+        "policy": {
+            "3-of": [
+                {
+                    "signed-by": 0
+                },
+                {
+                    "signed-by": 0
+                },
+                {
+                    "signed-by": 0
+                }
+            ]
+        }
+    },
+    "peers": {
+        "peer0.manufacturer.product.com": {
+            "url": "grpcs://localhost:7051",
+            "tlsCACerts": {
+                "path": "crypto-config/peerOrganizations/manufacturer.product.com/tlsca/tlsca.manufacturer.product.com-cert.pem"
+            },
+            "grpcOptions": {
+                "ssl-target-name-override": "peer0.manufacturer.product.com"
+            }
+        }
+    },
+    "certificateAuthorities": {
+        "ca.product.com": {
+            "url": "https://localhost:7054",
+            "caName": "ca.product.com",
+            "tlsCACerts": {
+                "path": "crypto-config/peerOrganizations/manufacturer.product.com/tlsca/tlsca.manufacturer.product.com-cert.pem"
+            },
+            "httpOptions": {
+                "verify": false
+            }
+        }
+    }
+}
